@@ -1,0 +1,1 @@
+This folder holds all the schemas related to this version of the Airspec specification.

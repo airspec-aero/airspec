@@ -1,0 +1,1 @@
+Documents for the static site will go here. If built from markdown, then have a src/ folder with the markdown files and a site/ folder with the built html.
