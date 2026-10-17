@@ -5,6 +5,8 @@ An open-source, community-driven specification for crew compliance and payroll r
 
 Create an open, permissively licensed and vendor-neutral way to describe airline crew rules, their meaning and their relationships.
 
+### Initial goal
+
 The first goal is deliberately small: do enough to explain the idea publicly, demonstrate why it matters and invite others to help shape it.
 
 ## The problem
