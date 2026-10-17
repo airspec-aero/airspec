@@ -1,0 +1,35 @@
+graph LR
+    %% Diagram for Rule: test (Scope: employee_rest_time)
+    classDef inputNode fill:#e1f5fe,stroke:#0288d1,stroke-width:1px;
+    classDef appNode fill:#e1f5fe,stroke:#0288d1,stroke-width:1px;
+    classDef valNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px;
+    classDef reqNode fill:#fff3e0,stroke:#f57c00,stroke-width:1px;
+    classDef limNode fill:#fff3e0,stroke:#f57c00,stroke-width:1px;
+    classDef ValueUpdateNode fill:#e8f5e9,stroke:#388e3c,stroke-width:1px;
+    classDef RequirementUpdateNode fill:#e8f5e9,stroke:#388e3c,stroke-width:1px;
+    classDef LimitUpdateNode fill:#e8f5e9,stroke:#388e3c,stroke-width:1px;
+
+    subgraph Input ["Input Entity"]
+        direction TB
+        N1["Employee Rest Time"]:::inputNode
+    end
+
+    subgraph Applicability ["Applicability"]
+        direction TB
+        N2["Applicable"]:::appNode
+    end
+
+    subgraph SubjectValue ["Initial Value"]
+        direction TB
+        N3["Entity's duration"]:::valNode
+    end
+
+    subgraph Requirement ["Initial Requirement"]
+        direction TB
+        N4["PT12H"]:::reqNode
+    end
+
+    %% Force left-to-right column flow across subgraphs
+    N1 ~~~ N2
+    N2 ~~~ N3
+    N3 ~~~ N4
