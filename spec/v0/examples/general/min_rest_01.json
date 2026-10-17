@@ -1,37 +1,37 @@
 {
-    "id": "d2b19b29-cb17-4a2b-967c-eae6708a348c",
-    "name": "test",
-    "scope": "employee_rest_time",
-    "applicability": {
-        "default": {
-            "phrase": "Default",
-            "kind": "applicable_value",
-            "applicable": true
-        },
-        "items": []
+  "id": "d2b19b29-cb17-4a2b-967c-eae6708a348c",
+  "name": "test",
+  "scope": "employee_rest_time",
+  "applicability": {
+    "default": {
+      "phrase": "Default",
+      "kind": "applicable_value",
+      "applicable": true
     },
-    "value": {
-        "default": {
-            "phrase": "Rest duration",
-            "kind": "field_value",
-            "field": "duration",
-            "multiplier": 1.0,
-            "offset": 0.0,
-            "clamp_lower": null,
-            "clamp_upper": null
-        },
-        "items": []
+    "items": []
+  },
+  "value": {
+    "default": {
+      "phrase": "Rest duration",
+      "kind": "field_value",
+      "field": "duration",
+      "multiplier": 1.0,
+      "offset": 0.0,
+      "clamp_lower": null,
+      "clamp_upper": null
     },
-    "value_updates": [],
-    "requirement": {
-        "default": {
-            "phrase": "Default",
-            "kind": "duration_value",
-            "duration": "PT12H"
-        },
-        "items": []
+    "items": []
+  },
+  "value_updates": [],
+  "requirement": {
+    "default": {
+      "phrase": "Default",
+      "kind": "duration_value",
+      "duration": "PT12H"
     },
-    "requirement_updates": [],
-    "limit": null,
-    "limit_updates": []
+    "items": []
+  },
+  "requirement_updates": [],
+  "limit": null,
+  "limit_updates": []
 }
