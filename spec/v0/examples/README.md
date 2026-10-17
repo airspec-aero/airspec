@@ -1,5 +1,5 @@
 # Overview
-This directory contains different examples of using the spec to configure different rules. One directory per ruleset, and a "general" directory for ad hoc rule examples.
+This directory contains different example definitions using this version of the spec. One directory per ruleset, and a "general" directory for ad hoc rule examples.
 
 # File Types
 Different file types in the directories:
