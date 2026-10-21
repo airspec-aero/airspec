@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to this project!
 
-This repository defines AirSpec, and open specification for defining crew payroll and compliance rules. We welcome feedback, suggestions, and discussions that help improve the specification.
+This repository defines AirSpec, an open specification for defining crew payroll and compliance rules. We welcome feedback, suggestions, and discussions that help improve the specification.
 
 Currently, changes to the specification are managed by the repository owners. However, the specification is community-driven so we welcome feedback and suggestions. If you'd like to contribute, please follow the process below.
 
