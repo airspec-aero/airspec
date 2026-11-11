@@ -12,9 +12,7 @@ defaults:
       layout: post
 exclude:
   - README.md
-  - formal-ruleset-demo.md
   - Gemfile
   - Gemfile.lock
   - vendor
-  - blog/formal_methods
   - assets/branding.md
