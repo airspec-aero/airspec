@@ -6,17 +6,29 @@ The landing page and blog live in `docs/` and use GitHub Pages' built-in Jekyll 
 
 - Edit `index.md` for the homepage.
 - Write articles in `_drafts/` and store article images in `assets/blog/`.
-- The scanned notes in `blog/formal_methods/` are excluded from the website.
 
-With a current Ruby installation (rather than macOS's system Ruby) and Bundler, run:
+On macOS, install Ruby separately from the system Ruby, then install the Bundler version used by this project:
+
+```sh
+brew install ruby@3.3
+export PATH="$(brew --prefix ruby@3.3)/bin:$PATH"
+gem install bundler -v 2.4.22 --no-document
+```
+
+Run the `export PATH=...` command in each new terminal session before using Bundler. Check that `ruby --version` reports 3.3 and `bundle --version` reports 2.x.
+
+From the repository root:
 
 ```sh
 cd docs
+bundle config set --local path vendor/bundle
 bundle install
 bundle exec jekyll serve
 ```
 
 Open `http://127.0.0.1:4000`. Add `--drafts` to preview unpublished articles.
+
+If you see `Could not find 'bundler' (2.4.22)` or `You must use Bundler 2 or greater`, run the setup commands above. `bundle update --bundler` cannot fix this while your shell is using macOS's Bundler 1.x.
 
 ## Publish a post
 
