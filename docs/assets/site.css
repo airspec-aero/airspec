@@ -1,0 +1,44 @@
+:root {
+  color-scheme: light;
+  font-family: "Poppins", sans-serif;
+  color: #002060;
+  background: #f2f2f2;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: #002060; text-underline-offset: .2em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 3px solid #0f9ed5; outline-offset: 5px; }
+header { background: #002060; text-align: center; padding: 0 24px 26px; }
+.brand { display: block; width: min(100%, 340px); margin: 0 auto; }
+.brand img { display: block; width: 100%; height: auto; }
+nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px 32px; }
+nav a { color: #f2f2f2; font-size: .9rem; }
+nav a[aria-current="page"] { text-decoration-thickness: 2px; }
+main { max-width: 800px; margin: 0 auto; padding: 56px 28px; line-height: 1.85; overflow-wrap: break-word; }
+h1, h2, h3 { font-weight: 700; line-height: 1.3; }
+h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin: 0 0 20px; }
+h2 { font-size: 1.45rem; margin-top: 48px; }
+h3 { font-size: 1.1rem; margin-top: 36px; }
+p { margin: 20px 0; }
+li { margin: 10px 0; }
+ul { padding-left: 24px; }
+blockquote { margin: 28px 0; padding: 2px 0 2px 22px; border-left: 3px solid #0f9ed5; }
+.post-list { list-style: none; padding: 0; }
+.post-list > li { margin: 32px 0; padding-bottom: 24px; border-bottom: 1px solid #ccd3df; }
+.post-list h2 { margin: 0 0 8px; }
+.post-date { color: #465777; font-size: .9rem; margin: 8px 0 24px; }
+.back-link { margin-top: 48px; }
+article img { max-width: 100%; height: auto; }
+pre { overflow-x: auto; padding: 16px; background: #e5e9ef; line-height: 1.5; }
+code { font-size: .9em; }
+footer { max-width: 800px; margin: 0 auto; padding: 24px 28px 36px; border-top: 1px solid #ccd3df; display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; font-size: .8rem; }
+.skip-link { position: absolute; left: 16px; top: -100px; padding: 12px; background: #f2f2f2; z-index: 1; }
+.skip-link:focus { top: 16px; }
+@media (max-width: 480px) {
+  .brand { width: 260px; max-width: 100%; }
+  main { padding: 36px 22px; }
+  footer { padding-left: 22px; padding-right: 22px; }
+}
