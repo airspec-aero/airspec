@@ -1,0 +1,20 @@
+title: AirSpec
+description: An open-source, community-driven specification for crew compliance and payroll rules for aviation.
+url: https://airspec.wiki
+baseurl: ""
+markdown: kramdown
+permalink: /blog/:title/
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+exclude:
+  - README.md
+  - formal-ruleset-demo.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - blog/formal_methods
+  - assets/branding.md
