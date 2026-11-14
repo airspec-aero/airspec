@@ -1,0 +1,58 @@
+---
+title: From crew rules to formal methods
+description: How AirSpec is related to ontology and formal methods and the need for guiding principles in designing those.
+author: Viktor Forsman
+---
+## Rest Periods
+
+AirSpec is an open
+
+The beauty of working in open source is that you get inspiration from people with different backgrounds who look at the problem in a different way than you and your colleagues are used to. In one of our early discussions, Maz brought up the idea of treating rest periods as first-class citizens of a spec. Having a rest period “fail” a rule, rather than a duty, was, for me, a completely new way of thinking about rules. I thought it was a really cool approach and could potentially eliminate common classes of bugs that occur when one expresses a rest rule using properties of duties.
+
+But then I immediately started to struggle with the question of how to make that choice. Should we allow rest periods as first-class citizens in our spec, or only reason about them as properties of duties (e.g., `duty.rest_before` and `duty.rest_after`)? Is this just a matter of taste and personal preference? If so, we could end up in endless arguments or discussions about the “best” or “most natural way” of describing things. It would be preferable to have clear design goals for the spec that would then guide these decisions.
+
+## What really is AirSpec?
+
+Before we start thinking about the design goals of the spec, we need to break down what really sits behind our specification. One concept that came up early in our discussions was ontology. An ontology maps out entities and their relations in a domain [maybe flesh it out briefly]. This concept is clearly related to the ideas behind AirSpec and the problem it intends to solve. Having a clearly defined and mapped-out ontology for our crew rules would give us a lot of benefits. If we map out and define the concepts clearly and enforce them throughout the business, we would no longer have to deal with problems such as a training department having a slightly different interpretation of what a duty is compared to the scheduling department. All requirements would have to be broken down into the concepts that are defined in the ontology. Applying ontology to business problems or software design is not a new concept, but it has seen a revival recently with the introduction of AI agents as business actors and the use of ontologies as a powerful supporting tool for them [rewrite this sentence].
+
+But AirSpec is more than just an ontology. We also define what can be said about the entities described in the ontology and exactly what those statements mean. This is the underlying logic behind AirSpec. Should we allow any predicate to be applied to any entity in our ontology, e.g., `for all d, p(d)`? Or should we limit the logic to allow only certain types of expressions, e.g., `for all d, d.rest_time >= limit`? [Make those two sentences slightly less technical.]
+
+Finally, AirSpec also includes a specific notation (which we have defined as typed variables and decision tables). The notation must be easily machine-readable and able to express our ontology and our logic.
+
+Let’s go back to the concept of rest periods. If we were to include rest periods as first-class citizens of AirSpec, they would have to be defined in the ontology as entities rather than calculated properties of a duty. We would also have to describe the relationship between duties and rest periods, i.e., all rest periods have a duty before and after, and vice versa. A minimum rest rule could then be described as being required to hold for all duties and their rest periods before or after, or as being required to hold for all rest periods. We could formulate a design goal: there is one obvious way of expressing a rule.[^python] I’m not saying this is necessarily our design goal, but having our design goals clearly described will make design choices for the ontology easier and less a matter of taste or “personal preference.” [I’m not sure about the order of things here. I showcase clearly (I think) how having a clearly defined design goal makes it easier to choose whether we should include rest periods in our ontology. But the flow feels a bit off.]
+
+## Logic and formal methods
+
+Let’s say we have two different formulations of a minimum rest rule: one using rest periods as the main entity and the other using duties and their properties. How can we guarantee that they represent the same rule? In a “normal” software system, we use regression and unit tests to ensure the system’s behavior is the same after a refactoring (reformulation) of a rule. But how do we do this with a formal spec that, by design, doesn’t have any behavior? We could build a tool that implements the AirSpec format and checks trips or rosters, and basically do the same thing that we do for a system implementation. But now we are testing the behavior of the system rather than the spec. And if two different people build two different tools implementing AirSpec, they may behave differently.
+
+Ideally, we want to reason about the spec without building a rule engine. What other options do we have? We can pull out semantic pieces and translate them into something more understandable, such as flowchart visualizations. This can be a powerful method of working with the spec and can give experts assurance that the rewritten rule is equivalent to the original. Additionally, one can use an AI agent to convert the spec back into natural language to support the experts’ assessment. While these can be very useful tools for reasoning about the rules in the spec, they will never give us absolute certainty. Flowcharts may look different, and two AI agents can come up with two different formulations. Additionally, these methods require manual work.
+
+Crew rules are logical formulations that express relationships between scheduled activities. (This is a very strong formulation; I’m not sure if it always holds.) And the beauty of logic is that it is an exact science in which conclusions can be derived formally. This, if done right, can be incredibly powerful and open up a whole world of possibilities.
+
+Let’s say we have two different formulations of a rule in AirSpec, `t1` and `t2`, and we have a way of translating the formulations into a formal logical language. Then we could guarantee the equivalence of the formulations with a logical statement:
+
+> For all trips `t` in domain `T`, `t1(t) ↔ t2(t)`.
+
+We can then use a formal method, such as a SAT or SMT solver, to prove this or provide a counterexample,[^1] or use a proof assistant such as [Lean](https://lean-lang.org/).
+
+This enables us to create a “regression test suite” for our spec, i.e., a set of schedules/trips that must always be legal or fail, which is a necessity when updating shared definitions.
+
+It also enables us to express and prove statements such as:
+
+> “There exists no superfluous rule in the system.”
+
+Or:
+
+> “This version of a rule is more restrictive than the previous version.”
+
+Etc., etc.
+
+## The Zen of AirSpec
+
+Getting the foundations right is not easy and will have big implications for the applicability and expressive power of the spec. Different rule documents describe rules differently and use a vast range of concepts, so describing an ontology that can serve as a baseline for all cases is quite the challenge. Additionally, having the ability to reason about rules and the schedules they entail is incredibly powerful, but mathematical certainty is often very difficult to achieve, and it mustn’t get in the way of making the spec practical to use.
+
+Having a set of explicit design goals and guiding principles for AirSpec will help us make the right choices for the foundation of the spec. Creating these is what I propose as the next task for the community.
+
+[^1]: The [Z3 guide](https://microsoft.github.io/z3guide/docs/logic/propositional-logic/) explains checking a claim by searching for a counterexample. Some analyses, such as [Alloy’s SAT-based analysis](https://alloytools.org/faq/how_does_the_alloy_analyzer_work.html), use bounded domains. [SMT arithmetic](https://microsoft.github.io/z3guide/docs/theories/Arithmetic/) can also range over mathematical integers and reals, so bounds are not always required. A bounded result applies within its bounds, and a solver may also return an inconclusive result.
+
+[^python]: Tim Peters, [The Zen of Python (PEP 20)](https://peps.python.org/pep-0020/), includes the principle of one obvious way to do something.
