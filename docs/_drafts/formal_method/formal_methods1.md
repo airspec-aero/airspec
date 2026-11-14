@@ -2,6 +2,7 @@
 title: From crew rules to formal methods
 description: How AirSpec is related to ontology and formal methods and the need for guiding principles in designing those.
 author: Viktor Forsman
+math: true
 ---
 ## Rest Periods
 
@@ -15,7 +16,7 @@ But then I immediately started to struggle with the question of how to make that
 
 Before we start thinking about the design goals of the spec, we need to break down what really sits behind our specification. One concept that came up early in our discussions was ontology. An ontology maps out entities and their relations in a domain [maybe flesh it out briefly]. This concept is clearly related to the ideas behind AirSpec and the problem it intends to solve. Having a clearly defined and mapped-out ontology for our crew rules would give us a lot of benefits. If we map out and define the concepts clearly and enforce them throughout the business, we would no longer have to deal with problems such as a training department having a slightly different interpretation of what a duty is compared to the scheduling department. All requirements would have to be broken down into the concepts that are defined in the ontology. Applying ontology to business problems or software design is not a new concept, but it has seen a revival recently with the introduction of AI agents as business actors and the use of ontologies as a powerful supporting tool for them [rewrite this sentence].
 
-But AirSpec is more than just an ontology. We also define what can be said about the entities described in the ontology and exactly what those statements mean. This is the underlying logic behind AirSpec. Should we allow any predicate to be applied to any entity in our ontology, e.g., `for all d, p(d)`? Or should we limit the logic to allow only certain types of expressions, e.g., `for all d, d.rest_time >= limit`? [Make those two sentences slightly less technical.]
+But AirSpec is more than just an ontology. We also define what can be said about the entities described in the ontology and exactly what those statements mean. This is the underlying logic behind AirSpec. Should we allow any predicate to be applied to any entity in our ontology, e.g., $$\forall d,\; p(d)$$? Or should we limit the logic to allow only certain types of expressions, e.g., $$\forall d,\; d.\mathrm{rest\_time} \geq \mathrm{limit}$$? [Make those two sentences slightly less technical.]
 
 Finally, AirSpec also includes a specific notation (which we have defined as typed variables and decision tables). The notation must be easily machine-readable and able to express our ontology and our logic.
 
@@ -29,9 +30,11 @@ Ideally, we want to reason about the spec without building a rule engine. What o
 
 Crew rules are logical formulations that express relationships between scheduled activities. (This is a very strong formulation; I’m not sure if it always holds.) And the beauty of logic is that it is an exact science in which conclusions can be derived formally. This, if done right, can be incredibly powerful and open up a whole world of possibilities.
 
-Let’s say we have two different formulations of a rule in AirSpec, `t1` and `t2`, and we have a way of translating the formulations into a formal logical language. Then we could guarantee the equivalence of the formulations with a logical statement:
+Let’s say we have two different formulations of a rule in AirSpec, $$t_1$$ and $$t_2$$, and we have a way of translating the formulations into a formal logical language. Then we could guarantee the equivalence of the formulations with a logical statement:
 
-> For all trips `t` in domain `T`, `t1(t) ↔ t2(t)`.
+$$
+\forall t \in T,\quad t_1(t) \iff t_2(t).
+$$
 
 We can then use a formal method, such as a SAT or SMT solver, to prove this or provide a counterexample,[^1] or use a proof assistant such as [Lean](https://lean-lang.org/).
 
