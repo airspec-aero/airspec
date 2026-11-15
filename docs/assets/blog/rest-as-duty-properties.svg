@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="270" viewBox="0 0 360 270" role="img" aria-labelledby="title desc">
+  <title id="title">Rest as duty properties</title>
+  <desc id="desc">Two consecutive duties separated by a rest interval. Duty 1's rest_after property and Duty 2's rest_before property both refer to that same interval.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f9ed5"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="358" height="268" rx="12" fill="#fff" stroke="#ccd3df"/>
+  <g font-family="Poppins, Arial, sans-serif" fill="#002060">
+    <text x="180" y="37" text-anchor="middle" font-size="21" font-weight="700">Rest as duty properties</text>
+    <rect x="20" y="78" width="80" height="48" rx="6" fill="#002060"/>
+    <rect x="260" y="78" width="80" height="48" rx="6" fill="#002060"/>
+    <g fill="#fff" font-size="18" text-anchor="middle">
+      <text x="60" y="109">Duty 1</text>
+      <text x="300" y="109">Duty 2</text>
+    </g>
+    <text x="180" y="94" text-anchor="middle" font-size="18">Rest</text>
+    <path d="M 103 114 H 257" fill="none" stroke="#0f9ed5" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M 103 107 V 121 M 257 107 V 121" fill="none" stroke="#0f9ed5" stroke-width="2"/>
+    <path d="M 90 194 L 167 137" fill="none" stroke="#0f9ed5" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 270 194 L 193 137" fill="none" stroke="#0f9ed5" stroke-width="2" marker-end="url(#arrow)"/>
+    <g font-family="monospace" font-size="16" text-anchor="middle">
+      <text x="90" y="224">duty1.rest_after</text>
+      <text x="270" y="224">duty2.rest_before</text>
+    </g>
+  </g>
+</svg>
