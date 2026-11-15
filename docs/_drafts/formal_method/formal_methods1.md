@@ -6,7 +6,7 @@ math: true
 ---
 ## Rest Periods
 
-The beauty of working in open source is that you get inspiration from people with different backgrounds who look at the problem in a different way than you and your colleagues are used to. In one of our early discussions, the idea of treating rest periods as first-class citizens of a spec was brought up. Having a rest period “fail” a rule, rather than a duty, was for me, a completely new way of thinking about rules. I thought it was a really cool approach and could potentially eliminate common classes of bugs that occur when one expresses a rest rule using properties of duties.
+The beauty of working in open source is that you get inspiration from people with different backgrounds who look at the problem in a different way than you and your colleagues are used to. In one of our early discussions, the idea of treating rest periods as first-class citizens of a spec was brought up. Having a rest period “fail” a rule, rather than a duty, was, for me, a completely new way of thinking about rules. I thought it was a really cool approach and could potentially eliminate common classes of bugs that occur when one expresses a rest rule using properties of duties.
 
 But then I immediately started to struggle with the question of how to make that choice. Should we allow rest periods as first-class citizens in our spec, or only reason about them as properties of duties (e.g., `duty.rest_before` and `duty.rest_after`)? Is this just a matter of taste and personal preference? If so, we may end up in endless arguments or discussions about the “best” or “most natural way” of describing things. It would be preferable to have clear design goals for the spec that would then guide these decisions.
 
@@ -42,13 +42,13 @@ We can then use a formal method, such as a SAT or SMT solver, to try to prove th
 
 This makes getting the definitions right even more important: they become the foundation for what we can prove about our rules.
 
-This enables us to create a “regression test suite” for our spec, i.e., a set of schedules/trips that must always be legal or fail, which is a necessity when updating shared definitions.
+This enables us to create a “regression test suite” for our spec, i.e., a set of schedules/trips with known expected outcomes—legal or illegal, which is a necessity when updating shared definitions.
 
 It also enables us to express and prove statements such as:
 
 > “There exists no superfluous rule in the system.”
 
-That is, each rule excludes something the others permit.
+That is, each rule excludes something that all the other rules together permit.
 
 Or:
 
