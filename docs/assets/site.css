@@ -31,7 +31,16 @@ blockquote { margin: 28px 0; padding: 2px 0 2px 22px; border-left: 3px solid #0f
 .post-list h2 { margin: 0 0 8px; }
 .post-date { color: #465777; font-size: .9rem; margin: 8px 0 24px; }
 .back-link { margin-top: 48px; }
+article .footnotes { margin-top: 48px; padding-top: 24px; border-top: 1px solid #ccd3df; color: #465777; font-size: .9rem; line-height: 1.7; }
+article .footnotes > ol { margin: 0; padding-left: 24px; }
+article .footnotes li:first-child, article .footnotes li:first-child > p:first-child { margin-top: 0; }
 article img { max-width: 100%; height: auto; }
+.rest-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 28px 0; }
+.rest-comparison img { display: block; width: 100%; }
+.rest-comparison figcaption { grid-column: 1 / -1; color: #465777; font-size: .9rem; }
+@media (max-width: 680px) {
+  .rest-comparison { grid-template-columns: 1fr; }
+}
 pre { overflow-x: auto; padding: 16px; background: #e5e9ef; line-height: 1.5; }
 code { font-size: .9em; }
 footer { max-width: 800px; margin: 0 auto; padding: 24px 28px 36px; border-top: 1px solid #ccd3df; display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; font-size: .8rem; }

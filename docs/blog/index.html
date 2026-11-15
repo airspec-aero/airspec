@@ -10,7 +10,7 @@ permalink: /blog/
   {% for post in site.posts %}
   <li>
     <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
-    <p class="post-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%-d %B %Y' }}</time></p>
+    <p class="post-date">{% if post.author %}By {{ post.author | escape }} · {% endif %}<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%-d %B %Y' }}</time></p>
     {% if post.description %}
     <p>{{ post.description | escape }}</p>
     {% else %}

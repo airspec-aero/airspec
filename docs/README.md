@@ -38,10 +38,21 @@ Start with `_drafts/formal-methods.md`:
 ---
 layout: post
 title: Formal methods
+author: Viktor Forsman
 description: A short summary of the article.
 ---
 
 Article text in Markdown.
+```
+
+Set `author` to the writer's name for each post. It appears beside the date on the article and blog listing to identify the individual author.
+
+For mathematical formulas, add `math: true` to the front matter to load MathJax. Use `$$t_1(t)$$` for inline math, or put the delimiters on separate lines for a displayed formula:
+
+```latex
+$$
+\forall t \in T,\quad t_1(t) \iff t_2(t)
+$$
 ```
 
 When ready, move it to `_posts/YYYY-MM-DD-formal-methods.md`, using the publication date. Its URL will be `/blog/formal-methods/`; it appears automatically on the blog page. Keep post filename slugs unique.
