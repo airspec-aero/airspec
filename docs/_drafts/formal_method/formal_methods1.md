@@ -60,9 +60,11 @@ Etc., etc.
 
 ## The Zen of AirSpec
 
-Getting the foundations right is not easy and will have big implications for the applicability and expressive power of the spec. Different rule documents describe rules differently and use a vast range of concepts, so describing an ontology that can serve as a baseline for all cases is quite the challenge. Additionally, having the ability to reason about rules and the schedules they entail is incredibly powerful, but mathematical certainty is often very difficult to achieve, and it mustn’t get in the way of making the spec practical to use.
+Getting the foundations right is not easy, and the choices we make will have big implications for the applicability and expressive power of the spec. Different rule documents describe rules differently and use a vast range of concepts, so describing an ontology that can serve as a baseline for all cases is quite the challenge. Being able to reason about rules and the schedules they entail is incredibly powerful, but mathematical certainty is often very difficult to achieve, and it mustn’t get in the way of making the spec practical to use.
 
-Having a set of explicit design goals and guiding principles for AirSpec will help us make the right choices for the foundation of the spec. Creating these is what I propose as the next task for the community.
+Making our design goals and guiding principles explicit will help us make better choices for AirSpec. These principles will develop as we explore concrete rules, compare approaches, and discover where the trade-offs lie. I’d like us to capture and revisit them as we go, so each design discussion helps inform the next.
+
+Alongside this, I want to explore which underlying logical systems are suitable for crew rules and what each would allow us to express and prove.
 
 [^1]: The [Z3 guide](https://microsoft.github.io/z3guide/docs/logic/propositional-logic/) explains checking a claim by searching for a counterexample. Some analyses, such as [Alloy’s SAT-based analysis](https://alloytools.org/faq/how_does_the_alloy_analyzer_work.html), use bounded domains. [SMT arithmetic](https://microsoft.github.io/z3guide/docs/theories/Arithmetic/) can also range over mathematical integers and reals, so bounds are not always required. A bounded result applies within its bounds, and a solver may also return an inconclusive result.
 
