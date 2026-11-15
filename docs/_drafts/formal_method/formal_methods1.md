@@ -24,19 +24,23 @@ When these goals pull in different directions, which should be the stronger guid
 
 ## Logic and formal methods
 
-Let’s say we have two different formulations of a minimum rest rule: one using rest periods as the main entity and the other using duties and their properties. How can we guarantee that they represent the same rule? In a “normal” software system, we use regression and unit tests to ensure the system’s behavior is the same after a refactoring (reformulation) of a rule. But how do we do this with a formal spec that, by design, doesn’t have any behavior? We could build a tool that implements the AirSpec format and checks trips or rosters, and basically do the same thing that we do for a system implementation. But now we are testing the behavior of the system rather than the spec. And if two different people build two different tools implementing AirSpec, they may behave differently.
+Let’s say we have two different formulations of a minimum rest rule: one using rest periods as the main entity and the other using duties and their properties. How can we guarantee that they represent the same rule? In a “normal” software system, we use regression and unit tests to check that the system’s behavior is the same after a refactoring (reformulation) of a rule. But how do we do this with a specification that isn’t itself an executable system? We could build a tool that implements the AirSpec format and checks trips or rosters, and basically do the same thing that we do for a system implementation. But now our assessment of the spec also depends on whether the tool interprets it correctly. And if two different people build two different tools implementing AirSpec, they may behave differently.
 
 Ideally, we want to reason about the spec without building a rule engine. What other options do we have? We can pull out semantic pieces and translate them into something more understandable, such as flowchart visualizations. This can be a powerful method of working with the spec and can give experts assurance that the rewritten rule is equivalent to the original. Additionally, one can use an AI agent to convert the spec back into natural language to support the experts’ assessment. While these can be very useful tools for reasoning about the rules in the spec, they will never give us absolute certainty. Flowcharts may look different, and two AI agents can come up with two different formulations. Additionally, these methods require manual work.
 
-Crew rules are logical formulations that express relationships between scheduled activities. (This is a very strong formulation; I’m not sure if it always holds.) And the beauty of logic is that it is an exact science in which conclusions can be derived formally. This, if done right, can be incredibly powerful and open up a whole world of possibilities.
+Crew rules such as minimum rest can be expressed as logical conditions on scheduled activities and their relationships. And the beauty of logic is that it is an exact science in which conclusions can be derived formally. This, if done right, can be incredibly powerful and open up a whole world of possibilities.
 
-Let’s say we have two different formulations of a rule in AirSpec, $$t_1$$ and $$t_2$$, and we have a way of translating the formulations into a formal logical language. Then we could guarantee the equivalence of the formulations with a logical statement:
+Let’s say we have two different formulations of a rule in AirSpec, $$t_1$$ and $$t_2$$, and we have a way of translating the formulations into a formal logical language. Then we could express the equivalence we want to establish as a logical statement:
 
 $$
 \forall t \in T,\quad t_1(t) \iff t_2(t).
 $$
 
-We can then use a formal method, such as a SAT or SMT solver, to prove this or provide a counterexample,[^1] or use a proof assistant such as [Lean](https://lean-lang.org/).
+Here, $$T$$ is the domain of trips we are considering, and $$t_1(t)$$ and $$t_2(t)$$ mean that trip $$t$$ satisfies each formulation. The statement says that every trip satisfies either both formulations or neither.
+
+We can then use a formal method, such as a SAT or SMT solver, to try to prove this or find a counterexample,[^1] or use a proof assistant such as [Lean](https://lean-lang.org/).
+
+This makes getting the definitions right even more important: they become the foundation for what we can prove about our rules.
 
 This enables us to create a “regression test suite” for our spec, i.e., a set of schedules/trips that must always be legal or fail, which is a necessity when updating shared definitions.
 
@@ -44,9 +48,13 @@ It also enables us to express and prove statements such as:
 
 > “There exists no superfluous rule in the system.”
 
+That is, each rule excludes something the others permit.
+
 Or:
 
 > “This version of a rule is more restrictive than the previous version.”
+
+That is, it allows no previously forbidden schedules while excluding some previously allowed ones.
 
 Etc., etc.
 
